@@ -5,11 +5,21 @@
 			"referenceName": "LS_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"paramTGT": {
+				"type": "string",
+				"defaultValue": "testtgt"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().paramTGT",
+					"type": "Expression"
+				},
 				"container": "target"
 			},
 			"columnDelimiter": ",",
