@@ -1,0 +1,31 @@
+{
+	"name": "DS_Target_copy1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"PRM_TGT_TEST": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().PRM_TGT_TEST",
+					"type": "Expression"
+				},
+				"container": "target"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
