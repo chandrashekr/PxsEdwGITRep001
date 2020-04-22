@@ -89,7 +89,10 @@
 				"outputs": [
 					{
 						"referenceName": "DS_Target",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"PRM_TGT": "test_tgt.txt"
+						}
 					}
 				]
 			}
