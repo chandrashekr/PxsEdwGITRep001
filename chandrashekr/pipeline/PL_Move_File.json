@@ -43,7 +43,7 @@
 						"referenceName": "DS_Source",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_SRC_File": "sample.txt"
+							"PRM_SRC_File": "test.txt"
 						}
 					}
 				],
@@ -52,7 +52,7 @@
 						"referenceName": "DS_Target",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_TGT_File": "Sample.txt"
+							"PRM_TGT_File": "test_tgt.txt"
 						}
 					}
 				]
