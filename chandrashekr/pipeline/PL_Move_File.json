@@ -43,7 +43,7 @@
 						"referenceName": "DS_Source",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_SRC_File": "samples.txt"
+							"PRM_SRC_File": "sample.txt"
 						}
 					}
 				],
