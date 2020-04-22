@@ -52,7 +52,7 @@
 						"referenceName": "DS_Target",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_TGT_File": "Order"
+							"PRM_TGT_File": "Sample.txt"
 						}
 					}
 				]
