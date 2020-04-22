@@ -8,7 +8,7 @@
 		"parameters": {
 			"PRM_SRC_File": {
 				"type": "string",
-				"defaultValue": "Samples.txt"
+				"defaultValue": "sample.txt"
 			}
 		},
 		"annotations": [],
