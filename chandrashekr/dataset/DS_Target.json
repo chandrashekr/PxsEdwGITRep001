@@ -1,15 +1,25 @@
 {
-	"name": "DS_Target_copy1",
+	"name": "DS_Target",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_Storage",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"PRM_TGT_File": {
+				"type": "string",
+				"defaultValue": "Order"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().PRM_TGT_File",
+					"type": "Expression"
+				},
 				"container": "target"
 			},
 			"columnDelimiter": ",",
