@@ -8,7 +8,7 @@
 		"parameters": {
 			"PRM_TGT_File": {
 				"type": "string",
-				"defaultValue": "Order"
+				"defaultValue": "Sample.txt"
 			}
 		},
 		"annotations": [],
