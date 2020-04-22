@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_Target",
-						"type": "DatasetReference",
-						"parameters": {
-							"PRM_TGT_File": "sample.txt"
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
