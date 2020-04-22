@@ -19,7 +19,7 @@
 						"referenceName": "DS_Target_copy1",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_TGT_TEST": "test_tgt.txt"
+							"PRM_TGT_TEST": "Orders.txt"
 						}
 					},
 					"fieldList": [
@@ -35,68 +35,6 @@
 				}
 			},
 			{
-				"name": "Copy_File",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "If Condition1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.00:00:00",
-					"retry": 2,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_Source",
-						"type": "DatasetReference",
-						"parameters": {
-							"PRM_SRC_File": "test.txt"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_Target",
-						"type": "DatasetReference",
-						"parameters": {
-							"PRM_TGT": "test_tgt.txt"
-						}
-					}
-				]
-			},
-			{
 				"name": "If Condition1",
 				"type": "IfCondition",
 				"dependsOn": [
@@ -107,7 +45,70 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@activity('Get Metadata1').output.exists",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "Copy_File_copy1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.00:00:00",
+								"retry": 2,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Source",
+									"type": "DatasetReference",
+									"parameters": {
+										"PRM_SRC_File": "test.txt"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Target",
+									"type": "DatasetReference",
+									"parameters": {
+										"PRM_TGT": "test_tgt.txt"
+									}
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
