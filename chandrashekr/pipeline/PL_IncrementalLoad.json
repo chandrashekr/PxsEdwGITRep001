@@ -54,6 +54,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select * FROM [STG_SCLT].[orders] \nwhere insertdatetime > @activity('LCK_LastRunDt_TGT').output",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
