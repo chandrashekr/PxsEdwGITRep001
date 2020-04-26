@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "LCK_LastRunDt",
+				"name": "LCK_LastRunDt_TGT",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -31,7 +31,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "LCK_LastRunDt",
+						"activity": "LCK_LastRunDt_TGT",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -47,6 +47,29 @@
 				"userProperties": [],
 				"typeProperties": {
 					"enableStaging": false
+				}
+			},
+			{
+				"name": "LCK_New_DT_SRC",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "DS_SQL_DB_SRC",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
