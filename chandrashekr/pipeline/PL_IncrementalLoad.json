@@ -55,10 +55,10 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * FROM [STG_SCLT].[orders] \nwhere insertdatetime > @activity('LCK_LastRunDt_TGT').output",
+							"value": "select * FROM [STG_SCLT].[orders] \nwhere insertdatetime > '@activity('LCK_LastRunDt_TGT').output.firstrow.watermarkvalue}'",
 							"type": "Expression"
 						},
-						"queryTimeout": "02:00:00"
+						"queryTimeout": "00:01:00"
 					},
 					"sink": {
 						"type": "AzureSqlSink"
