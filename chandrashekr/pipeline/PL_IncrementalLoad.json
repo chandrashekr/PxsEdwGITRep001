@@ -55,7 +55,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * FROM [STG_SCLT].[orders] \nwhere insertdatetime > '@activity('LCK_LastRunDt_TGT').output.firstrow.watermarkvalue}'",
+							"value": "select * FROM [STG_SCLT].[orders] \nwhere insertdatetime > '@{activity('LCK_LastRunDt_TGT').output.firstRow.watermarkvalue}'",
 							"type": "Expression"
 						},
 						"queryTimeout": "00:01:00"
@@ -158,7 +158,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT max(insertdatetime) FROM [STG_SCLT].[orders]",
+						"sqlReaderQuery": "SELECT tablename, watermarkvalue FROM [STG_SCLT].[watermarktable]",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
