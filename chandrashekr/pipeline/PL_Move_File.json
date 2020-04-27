@@ -1,5 +1,5 @@
 {
-	"name": "PL_Move_File_copy1",
+	"name": "PL_Move_File",
 	"properties": {
 		"activities": [
 			{
@@ -16,10 +16,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DS_Target_copy1",
+						"referenceName": "DSBLOB_Source",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_TGT_TEST": "Orders.txt"
+							"PRM_SRC_File": "sample.txt"
 						}
 					},
 					"fieldList": [
@@ -90,7 +90,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_Source",
+									"referenceName": "DSBLOB_Source",
 									"type": "DatasetReference",
 									"parameters": {
 										"PRM_SRC_File": "test.txt"
@@ -99,10 +99,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "DS_Target",
+									"referenceName": "DS_BLOB_Target",
 									"type": "DatasetReference",
 									"parameters": {
-										"PRM_TGT": "Orders.txt"
+										"PRM_TGT_TEST": "Orders.txt"
 									}
 								}
 							]

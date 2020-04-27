@@ -1,5 +1,5 @@
 {
-	"name": "DS_Target_copy1",
+	"name": "DS_BLOB_Target",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_Storage",
