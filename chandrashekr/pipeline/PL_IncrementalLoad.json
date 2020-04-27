@@ -190,7 +190,10 @@
 					"storedProcedureName": "[STG_SCLT].[spSetWatermark]",
 					"storedProcedureParameters": {
 						"NewTime": {
-							"value": "'@{activity('LCK_New_DT_SRC').output.firstrow.insertdatetime}'",
+							"value": {
+								"value": "@{activity('LCK_New_DT_SRC').output.firstrow.insertdatetime}",
+								"type": "Expression"
+							},
 							"type": "DateTime"
 						},
 						"TableName": {
