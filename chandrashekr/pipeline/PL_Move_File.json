@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get Metadata",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -16,10 +16,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DSBLOB_Source",
+						"referenceName": "DS_BLOB_Target",
 						"type": "DatasetReference",
 						"parameters": {
-							"PRM_SRC_File": "sample.txt"
+							"PRM_TGT_TEST": "Orders.txt"
 						}
 					},
 					"fieldList": [
@@ -39,7 +39,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Get Metadata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
