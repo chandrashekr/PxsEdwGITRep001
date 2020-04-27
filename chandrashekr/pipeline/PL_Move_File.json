@@ -3,52 +3,13 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata",
-				"type": "GetMetadata",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:00:00",
-					"retry": 2,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "DS_BLOB_Target",
-						"type": "DatasetReference",
-						"parameters": {
-							"PRM_TGT_TEST": "Orders.txt"
-						}
-					},
-					"fieldList": [
-						"exists"
-					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
-				}
-			},
-			{
 				"name": "If Condition1",
 				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata').output.exists",
+						"value": "@activity('Get Metadata').output",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
@@ -86,18 +47,14 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"value": "@activity('Get Metadata').output",
-									"type": "Expression"
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_BLOB_Source",
+									"referenceName": "DSBLOB_Source",
 									"type": "DatasetReference",
 									"parameters": {
-										"PRM_SRC_File": "test.txt"
+										"PRM_SRC_File": "OrderProcessing.txt"
 									}
 								}
 							],
@@ -112,6 +69,38 @@
 							]
 						}
 					]
+				}
+			},
+			{
+				"name": "Get Metadata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "TGT_FILE",
+						"value": "Order"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_BLOB_Target",
+						"type": "DatasetReference"
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
 				}
 			}
 		],
