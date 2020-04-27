@@ -8,7 +8,7 @@
 		"parameters": {
 			"PRM_TGT_TEST": {
 				"type": "string",
-				"defaultValue": "Test"
+				"defaultValue": "Orders"
 			}
 		},
 		"annotations": [],
