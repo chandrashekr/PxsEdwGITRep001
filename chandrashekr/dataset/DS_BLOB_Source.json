@@ -16,10 +16,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().PRM_SRC_File",
-					"type": "Expression"
-				},
 				"container": "source"
 			},
 			"columnDelimiter": ",",

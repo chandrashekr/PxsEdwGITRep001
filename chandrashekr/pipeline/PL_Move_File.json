@@ -86,11 +86,15 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"value": "@activity('Get Metadata').output",
+									"type": "Expression"
+								}
 							},
 							"inputs": [
 								{
-									"referenceName": "DSBLOB_Source",
+									"referenceName": "DS_BLOB_Source",
 									"type": "DatasetReference",
 									"parameters": {
 										"PRM_SRC_File": "test.txt"
