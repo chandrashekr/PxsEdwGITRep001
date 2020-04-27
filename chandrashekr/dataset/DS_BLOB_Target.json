@@ -2,7 +2,7 @@
 	"name": "DS_BLOB_Target",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LS_Storage",
+			"referenceName": "AzureBlobStorage_forCOSMOSDB",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -14,12 +14,7 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().PRM_TGT_TEST",
-					"type": "Expression"
-				},
-				"container": "target"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
