@@ -1,5 +1,5 @@
 {
-	"name": "DSBLOB_Source",
+	"name": "DS_BLOB_Source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_Storage",
