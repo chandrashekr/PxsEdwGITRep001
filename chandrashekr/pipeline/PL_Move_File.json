@@ -5,11 +5,18 @@
 			{
 				"name": "If Condition1",
 				"type": "IfCondition",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Check_File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata').output",
+						"value": "@activity('Check_File').output",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
@@ -24,13 +31,13 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true
+										"recursive": false,
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
@@ -48,7 +55,25 @@
 									}
 								},
 								"enableStaging": false
-							}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Source_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"DS_SRC_PRM": "OrderProcessing_txt"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Target_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"TGT_TGT_PRM": "test.txt"
+									}
+								}
+							]
 						}
 					]
 				}
@@ -72,7 +97,9 @@
 							"TGT_TGT_PRM": "test.txt"
 						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"exists"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true
