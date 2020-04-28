@@ -21,7 +21,7 @@
 				],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Check_File').output",
+						"value": "@activity('Check_File').output.exist",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
@@ -76,7 +76,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"TGT_TGT_PRM": {
-											"value": "@activity('Check_File').output",
+											"value": "@activity('Check_File').output.exists",
 											"type": "Expression"
 										}
 									}
