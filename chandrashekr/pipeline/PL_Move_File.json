@@ -5,7 +5,14 @@
 			{
 				"name": "If Condition1",
 				"type": "IfCondition",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Check_File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
@@ -48,31 +55,13 @@
 									}
 								},
 								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "DSBLOB_Source",
-									"type": "DatasetReference",
-									"parameters": {
-										"PRM_SRC_File": "OrderProcessing.txt"
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_BLOB_Target",
-									"type": "DatasetReference",
-									"parameters": {
-										"PRM_TGT_TEST": "Orders.txt"
-									}
-								}
-							]
+							}
 						}
 					]
 				}
 			},
 			{
-				"name": "Get Metadata",
+				"name": "Check_File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -82,15 +71,10 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "TGT_FILE",
-						"value": "Order"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DS_BLOB_Target",
+						"referenceName": "DS_Target_Blob",
 						"type": "DatasetReference"
 					},
 					"fieldList": [],
