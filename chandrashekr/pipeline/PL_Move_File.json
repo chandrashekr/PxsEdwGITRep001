@@ -69,7 +69,7 @@
 						"referenceName": "DS_Target_Blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"TGT_TGT_PRM": "Test"
+							"TGT_TGT_PRM": "test.txt"
 						}
 					},
 					"fieldList": [],
