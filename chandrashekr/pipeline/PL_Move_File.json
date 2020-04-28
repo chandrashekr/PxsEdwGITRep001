@@ -48,6 +48,17 @@
 										"type": "DelimitedTextReadSettings"
 									}
 								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
@@ -56,6 +67,18 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"DS_SRC_PRM": "OrderProcessing.txt"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Target_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"TGT_TGT_PRM": {
+											"value": "@activity('Check_File').output",
+											"type": "Expression"
+										}
 									}
 								}
 							]
