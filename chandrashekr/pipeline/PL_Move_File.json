@@ -13,7 +13,12 @@
 						]
 					}
 				],
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "ptm1",
+						"value": "test.txt"
+					}
+				],
 				"typeProperties": {
 					"expression": {
 						"value": "@activity('Check_File').output",
@@ -21,37 +26,26 @@
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Copy_File_copy1",
+							"name": "Copy data1",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.00:00:00",
-								"retry": 2,
+								"retry": 0,
 								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
 							},
+							"userProperties": [],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": false,
-										"enablePartitionDiscovery": false
+										"recursive": true
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
 									}
 								},
 								"enableStaging": false
@@ -61,16 +55,7 @@
 									"referenceName": "DS_Source_Blob",
 									"type": "DatasetReference",
 									"parameters": {
-										"DS_SRC_PRM": "OrderProcessing_txt"
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_Target_Blob",
-									"type": "DatasetReference",
-									"parameters": {
-										"TGT_TGT_PRM": "test.txt"
+										"DS_SRC_PRM": "OrderProcessing.txt"
 									}
 								}
 							]
@@ -89,6 +74,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [
+					{
+						"name": "tst",
+						"value": "test"
+					}
+				],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_Target_Blob",
