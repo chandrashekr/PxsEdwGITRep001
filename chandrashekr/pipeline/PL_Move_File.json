@@ -42,12 +42,18 @@
 			{
 				"name": "If Condition1",
 				"type": "IfCondition",
-				"dependsOn": [],
-				"userProperties": [],
+				"dependsOn": [
+					{
+						"activity": "Check_File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"typeProperties": {
 					"ifFalseActivities": [
 						{
-							"name": "Copy data",
+							"name": "CP_DATA",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -57,10 +63,21 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "CP",
+									"value": "Text"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
+									"additionalColumns": [
+										{
+											"name": "",
+											"value": "$$FILEPATH"
+										}
+									],
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true
