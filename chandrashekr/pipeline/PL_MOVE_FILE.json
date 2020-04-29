@@ -1,0 +1,47 @@
+{
+	"name": "PL_MOVE_FILE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Check_TGT_File",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_Target_Blob",
+						"type": "DatasetReference",
+						"parameters": {
+							"TGT_TGT_PRM": {
+								"value": "@pipeline().parameters.TGT_F.exists",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"TGT_F": {
+				"type": "string",
+				"defaultValue": "Test"
+			}
+		},
+		"annotations": []
+	}
+}
