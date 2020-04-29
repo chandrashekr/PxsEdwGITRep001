@@ -20,12 +20,14 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"TGT_TGT_PRM": {
-								"value": "@pipeline().parameters.TGT_F.exists",
+								"value": "@pipeline().parameters.TGT_F",
 								"type": "Expression"
 							}
 						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"exists"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true
