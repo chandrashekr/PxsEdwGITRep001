@@ -3,30 +3,51 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "If Condition1",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "Check_File",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"name": "Check_File",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [
 					{
-						"name": "ptm1",
-						"value": "test.txt"
+						"name": "tst",
+						"value": "test"
 					}
 				],
 				"typeProperties": {
-					"expression": {
-						"value": "@activity('Check_File').output.exist",
-						"type": "Expression"
+					"dataset": {
+						"referenceName": "DS_Target_Blob",
+						"type": "DatasetReference",
+						"parameters": {
+							"TGT_TGT_PRM": "test.txt"
+						}
 					},
+					"fieldList": [
+						"exists"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
 					"ifFalseActivities": [
 						{
-							"name": "Copy data1",
+							"name": "Copy data",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -75,52 +96,12 @@
 									"referenceName": "DS_Target_Blob",
 									"type": "DatasetReference",
 									"parameters": {
-										"TGT_TGT_PRM": {
-											"value": "@activity('Check_File').output.exists",
-											"type": "Expression"
-										}
+										"TGT_TGT_PRM": "test"
 									}
 								}
 							]
 						}
 					]
-				}
-			},
-			{
-				"name": "Check_File",
-				"type": "GetMetadata",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [
-					{
-						"name": "tst",
-						"value": "test"
-					}
-				],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "DS_Target_Blob",
-						"type": "DatasetReference",
-						"parameters": {
-							"TGT_TGT_PRM": "test.txt"
-						}
-					},
-					"fieldList": [
-						"exists"
-					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
 				}
 			}
 		],
