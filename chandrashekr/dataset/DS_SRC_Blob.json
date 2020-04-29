@@ -5,6 +5,12 @@
 			"referenceName": "LS_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"SRC": {
+				"type": "string",
+				"defaultValue": "test.txt"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
