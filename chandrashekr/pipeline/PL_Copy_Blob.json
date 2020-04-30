@@ -114,7 +114,7 @@
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Copy data1_copy1",
+							"name": "Copy Data to TGT",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
