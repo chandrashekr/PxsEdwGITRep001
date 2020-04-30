@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "PL_Copy_Blob",
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Check Target File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -100,7 +100,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Check Target File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -109,7 +109,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata1').output",
+						"value": "@activity('Check Target File').output.exists",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
