@@ -63,10 +63,6 @@
 						"type": "DelimitedTextSource",
 						"additionalColumns": [
 							{
-								"name": "sdssdsdf",
-								"value": "$$FILEPATH"
-							},
-							{
 								"name": "",
 								"value": "$$FILEPATH"
 							},
@@ -100,7 +96,10 @@
 				"inputs": [
 					{
 						"referenceName": "DS_SRC_Blob",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SRC": "test.txt"
+						}
 					}
 				],
 				"outputs": [
