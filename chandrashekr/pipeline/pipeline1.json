@@ -42,14 +42,7 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.00:00:00",
 					"retry": 0,
@@ -61,16 +54,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
-						"additionalColumns": [
-							{
-								"name": "",
-								"value": "$$FILEPATH"
-							},
-							{
-								"name": "",
-								"value": "$$FILEPATH"
-							}
-						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": false,
@@ -98,7 +81,7 @@
 						"referenceName": "DS_SRC_Blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"SRC": "test.txt"
+							"SRC": "OrderProcessing.txt"
 						}
 					}
 				],
@@ -107,10 +90,83 @@
 						"referenceName": "DS_Target_Blob",
 						"type": "DatasetReference",
 						"parameters": {
-							"TGT_TGT_PRM": "test.txt"
+							"TGT_TGT_PRM": "OrderProcessing.txt"
 						}
 					}
 				]
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"ifFalseActivities": [
+						{
+							"name": "Copy data1_copy1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": false,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_SRC_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"SRC": "OrderProcessing.txt"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Target_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"TGT_TGT_PRM": "OrderProcessing.txt"
+									}
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
