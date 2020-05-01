@@ -103,6 +103,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"expression": {
+						"value": "@activity('Check TGT File').output.exists",
+						"type": "Expression"
+					},
 					"ifFalseActivities": [
 						{
 							"name": "Copy Data_copy1",
