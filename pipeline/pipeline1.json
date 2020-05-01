@@ -22,11 +22,12 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_BLOB_TGT",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileT": "File"
+						}
 					},
-					"fieldList": [
-						"exists"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true
@@ -89,7 +90,10 @@
 				"outputs": [
 					{
 						"referenceName": "DS_BLOB_TGT",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileT": "File"
+						}
 					}
 				]
 			}
