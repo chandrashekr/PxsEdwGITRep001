@@ -116,7 +116,10 @@
 									"referenceName": "DS_BLOB_TGT",
 									"type": "DatasetReference",
 									"parameters": {
-										"FileT": "File1"
+										"FileT": {
+											"value": "@activity('Check TGT File').output",
+											"type": "Expression"
+										}
 									}
 								}
 							]
