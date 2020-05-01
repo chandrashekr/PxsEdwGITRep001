@@ -5,6 +5,12 @@
 			"referenceName": "LS_AZ_Blob_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileT": {
+				"type": "string",
+				"defaultValue": "File"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
