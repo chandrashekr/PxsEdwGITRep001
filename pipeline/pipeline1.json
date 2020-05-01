@@ -158,7 +158,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"SRC_File": {
-											"value": "@activity('Check TGT File').output",
+											"value": "@activity('Check TGT File').output.exists",
 											"type": "Expression"
 										}
 									}
