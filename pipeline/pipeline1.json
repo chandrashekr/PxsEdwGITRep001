@@ -27,7 +27,9 @@
 							"FileT": "File"
 						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"exists"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true
@@ -119,7 +121,12 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "SRCF",
+									"value": "SRCF"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
@@ -148,7 +155,13 @@
 							"inputs": [
 								{
 									"referenceName": "DS_BLOB_SRC",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"SRC_File": {
+											"value": "@activity('Check TGT File').output",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
