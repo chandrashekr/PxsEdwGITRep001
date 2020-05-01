@@ -1,0 +1,21 @@
+{
+	"name": "DS_BLOB_TGT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZ_Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "target"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
