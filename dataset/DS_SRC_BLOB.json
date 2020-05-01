@@ -1,0 +1,31 @@
+{
+	"name": "DS_SRC_BLOB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZ_Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"PARAMS": {
+				"type": "string",
+				"defaultValue": "OrderProcessing.txt"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().PARAMS",
+					"type": "Expression"
+				},
+				"container": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
