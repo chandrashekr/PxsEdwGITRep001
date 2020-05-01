@@ -24,7 +24,7 @@
 						"referenceName": "DS_BLOB_TGT",
 						"type": "DatasetReference",
 						"parameters": {
-							"FileT": "File"
+							"FileT": "File1"
 						}
 					},
 					"fieldList": [
