@@ -5,6 +5,12 @@
 			"referenceName": "LS_AZ_Blob_Storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"SRC_File": {
+				"type": "string",
+				"defaultValue": "TestF"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
