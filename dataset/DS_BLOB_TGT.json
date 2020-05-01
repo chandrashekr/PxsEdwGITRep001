@@ -8,7 +8,7 @@
 		"parameters": {
 			"FileT": {
 				"type": "string",
-				"defaultValue": "File"
+				"defaultValue": "TestTFil"
 			}
 		},
 		"annotations": [],
