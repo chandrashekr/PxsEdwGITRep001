@@ -1,0 +1,21 @@
+{
+	"name": "DS_BLOB_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZ_Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
