@@ -79,8 +79,7 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
+										"recursive": true
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
@@ -101,13 +100,10 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DS_BLOB_SRC",
+									"referenceName": "DS_SRC_BLOB",
 									"type": "DatasetReference",
 									"parameters": {
-										"SRC_File": {
-											"value": "@activity('Check TGT File').output.exists",
-											"type": "Expression"
-										}
+										"PARAMS": "OrderProcessing.txt"
 									}
 								}
 							],
@@ -117,7 +113,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"FileT": {
-											"value": "@activity('Check TGT File').output",
+											"value": "@activity('Check TGT File').output.exists",
 											"type": "Expression"
 										}
 									}
