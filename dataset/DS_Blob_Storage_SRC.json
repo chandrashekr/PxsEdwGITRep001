@@ -1,0 +1,31 @@
+{
+	"name": "DS_Blob_Storage_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZ_Blob_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TPS": {
+				"type": "string",
+				"defaultValue": "Orders.txt"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().TPS",
+					"type": "Expression"
+				},
+				"container": "stg"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
