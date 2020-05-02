@@ -20,7 +20,7 @@
 					"value": "@dataset().PARAMS",
 					"type": "Expression"
 				},
-				"container": "source"
+				"container": "src"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
